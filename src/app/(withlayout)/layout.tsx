@@ -6,6 +6,7 @@ import Sidebar from "@/components/ui/Sidebar";
 import Contents from "@/components/ui/Content";
 import { isLoggedIn } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
+import { Space, Spin } from "antd";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const userLoggedIn = isLoggedIn();
@@ -20,7 +21,21 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   }, [router, isLoading]);
 
   if (!isLoading) {
-    return <p>Loading......</p>;
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    );
   }
   return (
     <Layout hasSider>

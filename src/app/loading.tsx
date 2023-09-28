@@ -1,7 +1,19 @@
+import { Space, Spin } from "antd";
+
 const Loading = () => {
   return (
-    <div>
-      <h1>Loading....</h1>
+    <div
+      style={{
+        height: "100vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Space size="middle">
+        <Spin size="large" />
+      </Space>
     </div>
   );
 };
