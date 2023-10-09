@@ -2,8 +2,9 @@
 
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
-import FormMultiSelectField from "@/components/Forms/FormMultiSelectField";
-import { SelectOptions } from "@/components/Forms/FormSelectField";
+import FormMultiSelectField, {
+  SelectOptions,
+} from "@/components/Forms/FormMultiSelectField";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import { useAddCourseMutation, useCoursesQuery } from "@/redux/api/courseApi";
 import { Button, Col, Row, message } from "antd";
@@ -24,7 +25,7 @@ const CreateCoursePage = () => {
   const onSubmit = async (data: any) => {
     data.credits = parseInt(data?.credits);
 
-    const coursePreRequisitesOptions = data?.coursePreRequisites?.map(
+    const coursePreRequisitesOptions = data?.preRequisiteCourses?.map(
       (id: string) => {
         return {
           courseId: id,
@@ -32,7 +33,7 @@ const CreateCoursePage = () => {
       }
     );
 
-    data.coursePreRequisites = coursePreRequisitesOptions;
+    data.preRequisiteCourses = coursePreRequisitesOptions;
 
     message.loading("Creating.....");
     try {
@@ -70,7 +71,7 @@ const CreateCoursePage = () => {
             <div style={{ margin: "10px 0px" }}>
               <FormMultiSelectField
                 options={coursesOptions as SelectOptions[]}
-                name="coursePreRequisites"
+                name="preRequisiteCourses"
                 label="Pre Requisite Courses"
               />
             </div>

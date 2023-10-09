@@ -127,9 +127,12 @@ export const days = [
   "THURSDAY",
   "FRIDAY",
 ];
+
 export const daysOptions = days.map((day: string) => {
   return {
     label: day,
     value: day,
   };
 });
+
+export const semesterRegistrationStatus = ["UPCOMING", "ONGOING", "ENDED"];
